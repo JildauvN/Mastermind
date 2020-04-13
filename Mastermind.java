@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+//import java.math;
 // Code genereren
 // FD 
 // TS 
@@ -15,7 +16,7 @@ public class Mastermind {
 			code = code.concat( ("" + a));
         }
 		System.out.println(code);
-		System.out.println("Probeer de code te raden, deze bestaat uit vier letters uit de verzameling \na, b, c, d, e of f, een letter mag vaker voorkomen");
+		System.out.println("Probeer de geheime code te raden, deze bestaat uit vier letters uit de verzameling \na, b, c, d, e of f, een letter mag vaker voorkomen");
 		System.out.println("Als u wilt stoppen typt u \"q\".");
 		
 		
@@ -35,7 +36,7 @@ public class Mastermind {
 			System.out.println("Voer uw nieuwe code in:");
 			woord = input.nextLine();
 		}
-		System.out.println("Gefeliciteerd, " + woord + " komt overeen met de code. "); 
+		System.out.println("Gefeliciteerd, " + woord + " komt overeen met de geheime code. "); 
 		
 		        
         System.out.println("");
@@ -55,13 +56,24 @@ public class Mastermind {
 	
 	static int aantalBijnaGoed(String goed, String gok) {
 		int y = 4;
+		int z = 4;
 		for (int k = 0; k < 4; k++){
 			if (goed.indexOf(gok.charAt(k)) == -1){
-				y--;
+				y--; 
 			}
 		}
+		for (int l = 0; l < 4; l++){
+			if (gok.indexOf(goed.charAt(l)) == -1){
+				z--; 
+			}	
+		}
 		y = y - aantalGoedePlek(goed, gok);
-		return y;
+		z = z - aantalGoedePlek(goed, gok);
+		if (z <= y){
+			return z;
+		} else {
+			return y;
+		}
 	}
 }
 
