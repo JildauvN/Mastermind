@@ -16,6 +16,7 @@ public class Mastermind {
         }
 		System.out.println(code);
 		
+		
         
 		Scanner input = new Scanner(System.in);
         System.out.println("");
