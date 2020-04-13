@@ -15,8 +15,6 @@ public class Mastermind {
 			code = code.concat( ("" + a));
         }
 		System.out.println(code);
-		
-		
         
 		Scanner input = new Scanner(System.in);
         System.out.println("");
