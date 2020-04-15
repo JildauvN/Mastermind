@@ -1,13 +1,12 @@
 import java.util.Random;
 import java.util.Scanner;
-//import java.math;
 // Code genereren
 // FD 
 // TS 
 // TS 
 public class Mastermind {
     public static void main(String[] args) {
-        System.out.println("Welkom bij Mastermind, De eindcode is:");
+        System.out.println("Welkom bij Mastermind!");
         Random ra = new Random();
 		String code = "";
         for(int i = 0; i < 4; i++){
@@ -15,28 +14,35 @@ public class Mastermind {
            	char a = (char) getal;
 			code = code.concat( ("" + a));
         }
-		System.out.println(code);
-		System.out.println("Probeer de geheime code te raden, deze bestaat uit vier letters uit de verzameling \na, b, c, d, e of f, een letter mag vaker voorkomen");
+		//System.out.println("De eindcode is: " + code);
+		System.out.println("Probeer de geheime code te raden, deze bestaat uit vier letters uit de verzameling a, b, c, d, e of f, een letter mag vaker voorkomen");
 		System.out.println("Als u wilt stoppen typt u \"q\".");
 		
 		
         Scanner input = new Scanner(System.in);
         System.out.println("");
-        System.out.println("Voer uw code in:");
-        String woord = input.nextLine();
-		while (!code.equals(woord)) {
-			if (woord.equals("q")){
-				System.out.println("U heeft het spel gestopt, bedankt voor het spelen.");
+        System.out.print("Voer uw code in: ");
+        String gissing = input.nextLine();
+		while (!code.equals(gissing)) {
+			if (gissing.equals("q")){
+				System.out.println("\nU heeft het spel gestopt, bedankt voor het spelen.");
 				System.exit(0);
 			}
-			int aantalGoed = aantalGoedePlek(code, woord);
-			int aantalBijna = aantalBijnaGoed(code, woord);
+			if (gissing.length() != 4) {
+				System.out.println("Vul aub vier letters in, maak geen gebruik van spaties\n");
+				System.out.print("Voer uw nieuwe code in: ");
+				gissing = input.nextLine();
+				continue;
+			}
+			int aantalGoed = aantalGoedePlek(code, gissing);
+			int aantalBijna = aantalBijnaGoed(code, gissing);
 			System.out.println("Het aantal goede letters op de juiste plaats is: " + aantalGoed);
 			System.out.println("Het aantal goede letters op de verkeerde plaats is: " + aantalBijna);
-			System.out.println("Voer uw nieuwe code in:");
-			woord = input.nextLine();
+			System.out.println("");
+			System.out.print("Voer uw nieuwe code in: ");
+			gissing = input.nextLine();
 		}
-		System.out.println("Gefeliciteerd, " + woord + " komt overeen met de geheime code. "); 
+		System.out.println("Gefeliciteerd, " + gissing + " komt overeen met de geheime code. "); 
 		
 		        
         System.out.println("");
